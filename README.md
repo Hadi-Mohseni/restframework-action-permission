@@ -1,0 +1,1 @@
+[![Django CI](https://github.com/Hadi-Mohseni/restframework-action-permission/actions/workflows/CI.yaml/badge.svg)](https://github.com/Hadi-Mohseni/restframework-action-permission/actions/workflows/CI.yaml)
