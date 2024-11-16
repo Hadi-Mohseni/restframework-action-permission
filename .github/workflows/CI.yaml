@@ -29,9 +29,6 @@ jobs:
         pipx install poetry
         poetry install
         ls -a
-        cd ..
-        cd ..
-        ls -a
     - name: Run Tests
       run: |
         python manage.py test
