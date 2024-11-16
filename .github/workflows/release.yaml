@@ -26,13 +26,5 @@ jobs:
           pipx install poetry
           poetry install
           poetry build
-          
-  pypi-publish:
-    needs: build
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    name: upload release to PyPI
-    runs-on: ubuntu-latest
-    steps:
-      # retrieve your distributions here
-      - name: Publish package distributions to PyPI
+      - name: upload release to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
