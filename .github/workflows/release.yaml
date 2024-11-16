@@ -28,6 +28,7 @@ jobs:
           poetry build
           
   pypi-publish:
+    needs: build
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: upload release to PyPI
     runs-on: ubuntu-latest
