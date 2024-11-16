@@ -1,7 +1,10 @@
 name: Upload Python Package
 
 on:
-  release:
+  workflow_run: 
+    workflows: [Django CI] 
+    types: completed
+  release: 
     types: [published]
 
 permissions:
@@ -9,9 +12,9 @@ permissions:
 
 jobs:
   pypi-publish:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: upload release to PyPI
     runs-on: ubuntu-latest
-    environment: pypi
     steps:
       # retrieve your distributions here
       - name: Publish package distributions to PyPI
