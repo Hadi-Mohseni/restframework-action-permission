@@ -30,4 +30,4 @@ jobs:
         poetry install
     - name: Run Tests
       run: |
-        python ./sample_project/manage.py test
+        poetry run ./sample_project/manage.py test
