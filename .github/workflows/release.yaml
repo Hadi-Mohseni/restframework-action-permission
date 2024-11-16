@@ -1,9 +1,6 @@
 name: Release
 
 on:
-  workflow_run: 
-    workflows: [Django CI] 
-    types: completed
   release: 
     types: [published]
 
