@@ -3,7 +3,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.request import Request
 
 
-class DjangoActionPermissions(BasePermission):
+class ActionPermission(BasePermission):
     """
     DjangoActionPermissions
 
