@@ -1,0 +1,9 @@
+[
+    {
+        "model": "store.Product",
+        "id": 1,
+        "fields": {
+            "description": "Product one"
+        }
+    }
+]
