@@ -1,4 +1,4 @@
-from restframework_action_permission import ActionPermission
+from restframework_action_permission.permission import ActionPermission
 from rest_framework.viewsets import ModelViewSet
 from store.serializers import ProductSerializer
 from store.models import Product
