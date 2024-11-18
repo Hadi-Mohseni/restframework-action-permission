@@ -5,7 +5,7 @@ from store.views import ProductViewSet
 from store.models import Product
 
 
-class TestListAction(APITestCase):
+class TestCreateAction(APITestCase):
     fixtures = ["product.json", "user.json"]
 
     def setUp(self) -> None:
@@ -45,7 +45,7 @@ class TestListAction(APITestCase):
         self.assertEqual(response.status_code, 201)
 
 
-class TestRetrieveAction(APITestCase):
+class TestDeleteAction(APITestCase):
     fixtures = ["product.json", "user.json"]
 
     def setUp(self) -> None:
@@ -173,7 +173,7 @@ class TestRetrieveAction(APITestCase):
         self.assertEqual(response.status_code, 200)
 
 
-class TestRetrieveAction(APITestCase):
+class TestUpdateAction(APITestCase):
     fixtures = ["product.json", "user.json"]
 
     def setUp(self) -> None:
