@@ -51,13 +51,14 @@ class ActionPermission(BasePermission):
             return queryset
         return view_set.queryset
 
+
     def _get_user(self, request: Request):
         if not request.user.is_authenticated:
             return get_user_model().objects.get(id=1)
         else:
             return request.user
 
-    def has_model_permission(self, request: Request, view_set):
+    def check_model_permission(self, request: Request, view_set):
         """
         has_permission
 
@@ -94,13 +95,13 @@ class ActionPermission(BasePermission):
 
         return user.has_perm(permission)
 
-    def has_object_permission(self, request: Request, view_set: ViewSet):
+    def check_object_permission(self, request: Request, view_set: ViewSet):
         if not hasattr(view_set, "{}_object_permission".format(view_set.action)):
             return False
         pf = getattr(view_set, "{}_object_permission".format(view_set.action))
         return pf(request)
 
     def has_permission(self, request: Request, view_set: ViewSet):
-        if self.has_object_permission(request, view_set):
+        if self.check_object_permission(request, view_set):
             return True
-        return self.has_model_permission(request, view_set)
+        return self.check_model_permission(request, view_set)
