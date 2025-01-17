@@ -5,12 +5,6 @@ from django.apps import apps
 class Command(BaseCommand):
     help = "Start permission handling system."
 
-    def add_arguments(self, parser):
-        parser.add_argument(
-            "--my-list",
-            nargs="+",
-        )
-
     def handle(self, *args, **options):
         try:
             Permission = apps.get_model("auth", "Permission")
