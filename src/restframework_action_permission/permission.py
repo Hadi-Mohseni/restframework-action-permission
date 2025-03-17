@@ -51,6 +51,8 @@ class ActionPermission(BasePermission):
             return queryset
         return view_set.queryset
 
+    def _get_anonymous_user(self):
+        return get_user_model().objects.get(id=1)
 
     def _get_user(self, request: Request):
         if not request.user.is_authenticated:
@@ -93,7 +95,9 @@ class ActionPermission(BasePermission):
             "model_name": query_set.model._meta.model_name,
         }
 
-        return user.has_perm(permission)
+        return user.has_perm(permission) or self._get_anonymous_user().has_perm(
+            permission
+        )
 
     def check_object_permission(self, request: Request, view_set: ViewSet):
         if not hasattr(view_set, "{}_object_permission".format(view_set.action)):
