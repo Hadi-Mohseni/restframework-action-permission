@@ -89,7 +89,6 @@ class ActionPermission(BasePermission):
             return True
 
         query_set = self._get_queryset(view_set)
-
         permission = self.perms_map[view_set.action] % {
             "app_label": query_set.model._meta.app_label,
             "model_name": query_set.model._meta.model_name,
@@ -106,6 +105,9 @@ class ActionPermission(BasePermission):
         return pf(request)
 
     def has_permission(self, request: Request, view_set: ViewSet):
+        if request.method == "OPTIONS":
+            return True
+
         if self.check_object_permission(request, view_set):
             return True
         return self.check_model_permission(request, view_set)
